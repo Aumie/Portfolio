@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react'
 import { FaBars } from 'react-icons/fa'
 import { links } from './data'
 import logol from '../../../assets/logol.svg'
@@ -13,6 +13,7 @@ const getStorageTheme = () => {
   return [theme, sw]
 }
 export const Navbar = () => {
+  const [path, setPath] = useState('/')
   const [showLinks, setShowLinks] = useState(false)
   const linksContainerRef = useRef(null)
   const linksRef = useRef(null)
@@ -38,16 +39,16 @@ export const Navbar = () => {
     // console.log(linksContainerRef.current.getBoundingClientRect().height)
     // console.log(linksHeight)
     if (showLinks) {
-      linksContainerRef.current.style.height = `${linksHeight}px`
+      linksContainerRef.current.style.height = `${linksHeight + 3}px`
     } else {
       linksContainerRef.current.style.height = '0px'
     }
     return () => {}
   }, [showLinks])
-  useEffect(() => {
-    const pathname = window.location.pathname
-    console.log(pathname)
-  }, [])
+  useLayoutEffect(() => {
+    setPath(window.location.pathname)
+    console.log(path)
+  }, [path])
   return (
     <nav className='navbar navbar-expand-lg rgb'>
       <div className='container'>
@@ -102,8 +103,16 @@ export const Navbar = () => {
             {links.map((link) => {
               const { id, url, text } = link
               return (
-                <li key={id} className='nav-item'>
-                  <a href={url} className='nav-btn'>
+                <li
+                  key={id}
+                  className={`nav-item nav-btn ${
+                    path.match(url) && 'nav-btn-active'
+                  }`}
+                >
+                  <a href={url}>
+                    {/* {`nav-btn nav-active-btn${
+                      url === path.slice[url.length] && 'nav-active-btn'
+                    }`} */}
                     {text}
                   </a>
                 </li>

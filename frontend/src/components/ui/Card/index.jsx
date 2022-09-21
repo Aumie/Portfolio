@@ -1,6 +1,6 @@
 import React from 'react'
 import jpg from '../../../assets/card.jpg'
-export const Card = () => {
+export const Card = ({ title, text, date }) => {
   return (
     <div className='card mb-3'>
       <div className='row g-0'>

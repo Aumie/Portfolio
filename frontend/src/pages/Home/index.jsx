@@ -1,4 +1,5 @@
 import React from 'react'
+import { BlogsContent } from '../../components/ui/BlogsContent'
 import { Card } from '../../components/ui/Card'
 import { ThreeColumns } from '../../layout/ThreeColumns'
 export const Home = () => {
@@ -44,30 +45,8 @@ export const Home = () => {
                   <h4 className='home-label-title'>BLOGs</h4>
                 </div>
               </div>
-              <div className='blog-list-home'>
-                <div className='blog-list-content blog-content-underline rgb'>
-                  <h4>Blog Title Sample</h4>
-                  <span className='fw-lighter'>
-                    <span className='year rgb'>&ensp;2018&ensp;</span> November,
-                    12
-                  </span>
-
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Doloribus nam, vero facilis sint dolorem numquam veniam
-                    consequuntur repudiandae pariatur ipsa.
-                  </p>
-                </div>
-              </div>
-              <div className='blog-list-content blog-content-underline rgb'>
-                <h4>Blog Title Sample</h4>
-                <span className='year rgb'>&ensp;2018&ensp;</span>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Doloribus nam, vero facilis sint dolorem numquam veniam
-                  consequuntur repudiandae pariatur ipsa.
-                </p>
-              </div>
+              <BlogsContent />
+              <BlogsContent />
             </div>
           </article>
         </section>
