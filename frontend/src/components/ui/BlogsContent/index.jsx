@@ -1,20 +1,24 @@
 import React from 'react'
-
-export const BlogsContent = ({ title, date, content }) => {
+import { Link } from 'react-router-dom'
+import moment from 'moment'
+export const BlogsContent = ({ obj }) => {
   return (
     <div className='blog-list-home'>
-      <div className='blog-list-content blog-content-underline rgb'>
-        <h4>Blog Title Sample</h4>
-        <span className='fw-lighter'>
-          <span className='year rgb'>&ensp;2018&ensp;</span>
-          &ensp;November, 12
+      <div className='blog-list-content blog-content-underline'>
+        <Link to={`/blogs/post/${obj.slug}`}>
+          <h4 className='rgb'>{obj.title}</h4>
+        </Link>
+        <span className='fw-lighter d-flex'>
+          <span className='year rgb'>
+            &ensp;{moment(obj.created_at).utc().local().format('Y')}&ensp;
+          </span>
+          &ensp;{moment(obj.created_at).utc().local().format('MMMM, D')}
+          <span className='ms-auto'>
+            Last update:&ensp;{moment(obj.updated_at).utc().local().fromNow()}
+          </span>
         </span>
 
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-          nam, vero facilis sint dolorem numquam veniam consequuntur repudiandae
-          pariatur ipsa.
-        </p>
+        <p>{obj.desc}</p>
       </div>
     </div>
   )

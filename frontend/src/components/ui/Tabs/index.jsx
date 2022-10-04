@@ -5,35 +5,14 @@ import { FaAngleDoubleRight } from 'react-icons/fa'
 import './index.css'
 import { Fade } from 'react-awesome-reveal'
 
-const url = 'https://course-api.com/react-tabs-project'
-export const Tabs = () => {
-  const [loading, setLoading] = useState(true)
-  const [jobs, setJobs] = useState([])
-  const [value, setValues] = useState(0)
-
-  const fetchJobs = async () => {
-    const res = await fetch(url)
-    const newJobs = await res.json()
-    setJobs(newJobs)
-    setLoading(false)
-  }
-  useEffect(() => {
-    fetchJobs()
-  }, [])
-
-  if (loading) {
-    return (
-      <section className='section loading'>
-        <h1>Loading...</h1>
-      </section>
-    )
-  }
+export const Tabs = ({ jobs, value, setValues }) => {
   const { company, dates, duties, title } = jobs[value]
+
   return (
     <section className='section'>
       <Fade direction='up'>
         <div className='title'>
-          <h2>experience</h2>
+          <h2>Experience</h2>
           <div className='underline'></div>
         </div>
         <div>

@@ -1,8 +1,11 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { FaBars } from 'react-icons/fa'
 import { links } from './data'
-import logol from '../../../assets/logol.svg'
-import logod from '../../../assets/logod.svg'
+import { useContext } from 'react'
+import { AuthContext } from '../../../context'
+const logol = '/logos/logol.svg'
+const logod = '/logos/logod.svg'
 const getStorageTheme = () => {
   let theme = 'light-theme'
   let sw = 'on'
@@ -13,12 +16,15 @@ const getStorageTheme = () => {
   return [theme, sw]
 }
 export const Navbar = () => {
+  const location = useLocation()
   const [path, setPath] = useState('/')
   const [showLinks, setShowLinks] = useState(false)
   const linksContainerRef = useRef(null)
   const linksRef = useRef(null)
   const [theme, setTheme] = useState(getStorageTheme()[0])
   const [swTheme, setSwTheme] = useState(getStorageTheme()[1]) //it errors if use just boolean, dk y???
+  const { currentUser, logout } = useContext(AuthContext)
+
   const toggleTheme = (e) => {
     if (theme === 'light-theme' && swTheme === 'on') {
       setTheme('dark-theme')
@@ -45,15 +51,16 @@ export const Navbar = () => {
     }
     return () => {}
   }, [showLinks])
-  useLayoutEffect(() => {
-    setPath(window.location.pathname)
-    console.log(path)
-  }, [path])
+  useEffect(() => {
+    // setPath(window.location.pathname)
+    // console.log(path)
+    // console.log(location.pathname)
+  }, [location.pathname])
   return (
     <nav className='navbar navbar-expand-lg rgb'>
       <div className='container'>
         {/* brand */}
-        <a href='#' className='ps-0'>
+        <a href='/home' className='ps-0'>
           <img
             src={swTheme == 'on' ? logol : logod}
             alt='logo'
@@ -62,10 +69,10 @@ export const Navbar = () => {
         </a>
         {/* 2items */}
         <h4 className='me-2 ms-auto mt-2'>
-          <a href='#' className='links'>
-            <span>a</span>
+          {/* <a href='#' className='links'>
+            <span>A</span>
             <span>あ</span>
-          </a>
+          </a> */}
         </h4>
         <span className='me-2 mt-1'>
           <input
@@ -106,15 +113,14 @@ export const Navbar = () => {
                 <li
                   key={id}
                   className={`nav-item nav-btn ${
-                    path.match(url) && 'nav-btn-active'
+                    location.pathname.match(url) && 'nav-btn-active'
                   }`}
                 >
-                  <a href={url}>
-                    {/* {`nav-btn nav-active-btn${
-                      url === path.slice[url.length] && 'nav-active-btn'
-                    }`} */}
-                    {text}
-                  </a>
+                  {url[0] == '/' ? (
+                    <Link to={url}>{text}</Link>
+                  ) : (
+                    <a href={url}>{text}</a>
+                  )}
                 </li>
               )
             })}
@@ -130,6 +136,14 @@ export const Navbar = () => {
           )
         })}
       </ul> */}
+        <div>
+          <span style={{ marginRight: '6px' }}>{currentUser?.name}</span>
+        </div>
+        <div>
+          <span style={{ cursor: 'pointer' }} onClick={logout}>
+            {currentUser ? 'Logout' : ''}
+          </span>
+        </div>
       </div>
     </nav>
   )

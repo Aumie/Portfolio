@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { FaAngleUp } from 'react-icons/fa'
-import ToTop from '../../../assets/totop.gif'
 
 import './index.css'
 
+const ToTop = '/scroll/totop.gif'
 const ScrollToTop = () => {
   const [showTopBtn, setShowTopBtn] = useState(false)
   useEffect(() => {

@@ -1,8 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { BlogsContent } from '../../components/ui/BlogsContent'
 import { Card } from '../../components/ui/Card'
-import { ThreeColumns } from '../../layout/ThreeColumns'
+import { Loading } from '../../components/ui/Loding'
+import { ThreeColumns } from '../../layout'
+import { axiosInstance } from '../../utils'
+
+const projectUrl = '/blogs/post/?page_size=3&tags=project'
+const postUrl = '/blogs/post/?page_size=3'
 export const Home = () => {
+  const [loading, setLoading] = useState(true)
+  const [proj, setProj] = useState([])
+  const [blogs, setBlogs] = useState([])
+
+  const fetchBlogs = async () => {
+    const resP = await axiosInstance.get(projectUrl)
+    const resB = await axiosInstance.get(postUrl)
+    setProj(resP.data.results)
+    setBlogs(resB.data.results)
+    setLoading(false)
+  }
+  useEffect(() => {
+    fetchBlogs()
+  }, [])
+
   return (
     <React.Fragment>
       <div className='jumbotron'>
@@ -16,41 +37,53 @@ export const Home = () => {
                 versions of Bootstrap. Check out the examples below for how you
                 can remix and restyle it to your liking.
               </p>
-              <button className='btn rgb' type='button'>
+              <button className='btn btn-warning rgb' type='button'>
                 CV Download
               </button>
             </div>
           </div>
         </div>
       </div>
-      <ThreeColumns>
-        <section className='card-section'>
-          <p>recent projects</p>
-          <Card />
-          <Card />
-          <Card />
-          <div className='d-flex justify-content-end'>
-            <p>
-              <a className='rgb' href='#'>
-                view more
-              </a>
-            </p>
-          </div>
-        </section>
-        <section className='blog-section'>
-          <article>
-            <div className='article-wrapper'>
-              <div className='blog-label'>
-                <div className='home-label rgb'>
-                  <h4 className='home-label-title'>BLOGs</h4>
-                </div>
-              </div>
-              <BlogsContent />
-              <BlogsContent />
+      {loading ? (
+        <Loading loading={loading} />
+      ) : (
+        <ThreeColumns>
+          <section className='card-section'>
+            <p>recent projects</p>
+            {proj.map((obj, index) => {
+              return <Card parent='home' obj={obj} key={index} />
+            })}
+
+            <div className='d-flex justify-content-end'>
+              <p>
+                <Link
+                  to={'/blogs/?tags=project'}
+                  className='rgb'
+                  style={{ color: 'var(--clr-font)' }}
+                >
+                  view more
+                </Link>
+              </p>
             </div>
-          </article>
-        </section>
-      </ThreeColumns>
+          </section>
+          <section className='blog-section'>
+            <article className='full-column'>
+              <div className='article-wrapper'>
+                <div className='blog-label'>
+                  <div className='home-label rgb'>
+                    <Link to={'/blogs'}>
+                      <h4 className='home-label-title'>BLOGs</h4>
+                    </Link>
+                  </div>
+                </div>
+                {blogs.map((obj, index) => {
+                  return <BlogsContent obj={obj} key={index} />
+                })}
+              </div>
+            </article>
+          </section>
+        </ThreeColumns>
+      )}
     </React.Fragment>
   )
 }
