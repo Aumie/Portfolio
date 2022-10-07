@@ -5,7 +5,7 @@ export const BlogsContent = ({ obj }) => {
   return (
     <div className='blog-list-home'>
       <div className='blog-list-content blog-content-underline'>
-        <Link to={`/blogs/post/${obj.slug}`}>
+        <Link to={`/blog/post/${obj.slug}`}>
           <h4 className='rgb'>{obj.title}</h4>
         </Link>
         <span className='fw-lighter d-flex'>

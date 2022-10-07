@@ -2,4 +2,4 @@
 set -e
 
 npm rebuild esbuild
-npm run dev
+npm run preview

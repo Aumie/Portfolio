@@ -10,14 +10,16 @@ from users.serializers import UserSerializer
 class ImageSerializer(serializers.ModelSerializer):
     """Serializer for images."""
     # on_post = serializers.ReadOnlyField(source='on_post.title')
-    on_post = serializers.SerializerMethodField('get_on_post')
+    # on_post = serializers.SerializerMethodField('get_on_post')
 
-    def get_on_post(self, image) -> dict:
-        return {'id': image.on_post.id, 'title': image.on_post.title}
+    # def get_on_post(self, image) -> dict:
+    # return {'id': image.on_post.id, 'title': image.on_post.title}
 
     class Meta:
         model = Image
-        fields = ['id', 'image', 'path', 'on_post']
+        fields = ['id', 'image', 'path',
+                  #   'on_post'
+                  ]
         read_only_fields = ['id']
 
 
@@ -57,12 +59,14 @@ class PostDetailSerializer(PostSerializer):
     created_at = serializers.DateTimeField(
         # format="%d %B, %Y %H:%M:%S",
         read_only=True)
-    images = serializers.SlugRelatedField(
-        many=True, read_only=True, slug_field='path')
+    # images = serializers.SlugRelatedField(
+    #     many=True, read_only=True, slug_field='path')
 
     class Meta(PostSerializer.Meta):
         fields = PostSerializer.Meta.fields + \
-            ['content', 'images']
+            ['content',
+             #  'images'
+             ]
 
     def _get_or_create_tags(self, tags, post):
         """Handle getting or creating tags as needed."""

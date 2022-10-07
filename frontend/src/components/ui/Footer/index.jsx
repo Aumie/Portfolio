@@ -11,7 +11,9 @@ export const Footer = () => {
           <ul className='list-unstyled d-flex justify-content-center social-icons'>
             {social.map(({ id, url, icon }) => (
               <li className='ms-3' key={id}>
-                <a href={url}>{icon}</a>
+                <a href={url} target='_blank'>
+                  {icon}
+                </a>
               </li>
             ))}
           </ul>

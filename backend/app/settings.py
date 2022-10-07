@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
 
+
+
     'core',
     'users',
     'posts',
@@ -150,7 +152,8 @@ CORS_ALLOW_CREDENTIALS = True
 
 # X_FRAME_OPTIONS = 'DENY'
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173'
+    'http://localhost:5173',
+    'http://127.0.0.1:5173'
 ]
 # change to https://app.example.com in production settings
 CORS_ORIGIN_WHITELIST = ['http://localhost:5173']

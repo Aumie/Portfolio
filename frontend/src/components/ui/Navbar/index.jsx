@@ -23,7 +23,7 @@ export const Navbar = () => {
   const linksRef = useRef(null)
   const [theme, setTheme] = useState(getStorageTheme()[0])
   const [swTheme, setSwTheme] = useState(getStorageTheme()[1]) //it errors if use just boolean, dk y???
-  const { currentUser, logout } = useContext(AuthContext)
+  const { currentUser, logout, setCurrentUser } = useContext(AuthContext)
 
   const toggleTheme = (e) => {
     if (theme === 'light-theme' && swTheme === 'on') {
@@ -55,18 +55,18 @@ export const Navbar = () => {
     // setPath(window.location.pathname)
     // console.log(path)
     // console.log(location.pathname)
-  }, [location.pathname])
+  }, [location.pathname, currentUser])
   return (
     <nav className='navbar navbar-expand-lg rgb'>
       <div className='container'>
         {/* brand */}
-        <a href='/home' className='ps-0'>
+        <Link to={'/home'} className='ps-0'>
           <img
             src={swTheme == 'on' ? logol : logod}
             alt='logo'
             className='brand'
           />
-        </a>
+        </Link>
         {/* 2items */}
         <h4 className='me-2 ms-auto mt-2'>
           {/* <a href='#' className='links'>

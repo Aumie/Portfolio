@@ -1,4 +1,5 @@
 import './App.css'
+import './dracula.css'
 import {
   BrowserRouter,
   createBrowserRouter,
@@ -39,19 +40,19 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: '/blogs',
+        path: '/blog',
         element: <Blogs />,
       },
       {
-        path: '/blogs/post/:slug',
+        path: '/blog/post/:slug',
         element: <Detail />,
       },
       {
-        path: '/blogs/post/write',
+        path: '/blog/post/write',
         element: <Write />,
       },
       {
-        path: '/blogs/post/:slug/edit',
+        path: '/blog/post/:slug/edit',
         element: <Write />,
       },
     ],

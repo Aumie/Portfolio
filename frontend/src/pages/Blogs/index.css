@@ -86,6 +86,9 @@ Post
 .title-link:hover {
   color: var(--clr-pallete-4);
 }
+.draft-active {
+  color: var(--clr-pallete-7);
+}
 /* @media screen and (min-width: 768px) {
   .menu-item {
     grid-template-columns: 225px 1fr;

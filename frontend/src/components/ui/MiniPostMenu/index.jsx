@@ -43,7 +43,7 @@ export const MiniPostMenu = () => {
           </div>
         </div>
       </div> */}
-      <Link to={-1}>
+      <Link to={'/blog'}>
         <button className='btn rgb btn-mini btn-primary'>
           <FaArrowAltCircleLeft style={{ paddingBottom: '4px' }} />
           Go back

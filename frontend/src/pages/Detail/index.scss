@@ -1,0 +1,41 @@
+/* overwrite quill videostyle */
+.ql-video {
+  width: 400px;
+  height: 250px;
+}
+.ql-align-center {
+  align-self: center;
+}
+.ql-align-right {
+  align-self: flex-end;
+}
+.ql-syntax {
+  background-color: rgb(39, 36, 36);
+  color: white;
+  padding: 10px 0 10px 15px;
+  counter-reset: line;
+  box-shadow: 0.5px 0.5px 0.5px 0.5px #f4aab9, -0.5px 0px 0.5px 0.5px #0893d8;
+}
+
+/* .ql-syntax ::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  border-right: 1px solid #ddd;
+  padding: 0 0.5em;
+  margin-right: 0.5em;
+  color: #888;
+} */
+u {
+  text-decoration: var(--clr-font) underline !important;
+}
+s {
+  text-decoration: var(--clr-font) line-through !important;
+}
+
+// .content {
+//   display: grid;
+//   img {
+//     grid-row: 1;
+//   }
+// }

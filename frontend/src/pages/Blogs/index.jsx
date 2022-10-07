@@ -22,6 +22,7 @@ export const Blogs = () => {
   const [querypub, setQueryPub] = useState('')
   const mounted = useRef(false)
   const [newPosts, setNewPosts] = useState(false)
+  const [draftFlag, setDraftFlag] = useState(false)
 
   let res
   let url = `${mainUrl}`
@@ -110,7 +111,7 @@ export const Blogs = () => {
           .split(',')
           .filter((item) => item != tag)
           .join(',')
-      console.log(oldtag)
+      // console.log(oldtag)
       return `${oldtag},${tag}`
     })
     if (!query) return
@@ -122,19 +123,22 @@ export const Blogs = () => {
 
   const handleDraft = (e) => {
     e.preventDefault()
-    setQueryPub('False')
-    if (!query) return
-    if (page === 1) {
-      fetchPosts()
-    }
-    setPage(1)
+    setDraftFlag(!draftFlag)
+    if (draftFlag) {
+      setQueryPub('False')
+      if (!query) return
+      if (page === 1) {
+        fetchPosts()
+      }
+      setPage(1)
+    } else setQueryPub('')
   }
   return (
     <ThreeColumns>
       <main>
         <section className='section'>
           <div className='title'>
-            <h2>Blogs</h2>
+            <h2>Blog</h2>
             <div className='underline'></div>
             {localStorage.getItem('user') && (
               <>

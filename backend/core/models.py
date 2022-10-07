@@ -66,7 +66,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     user_image = models.ImageField(null=True, blank=True,
-                                   default='user.jpg',
                                    upload_to=post_image_file_path)
 
     objects = UserManager()
@@ -83,14 +82,14 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=120)
+    title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(null=True, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
                                on_delete=models.CASCADE)
     cover_image = models.ImageField(null=True, blank=True,
-                                    default='default.jpg',
+
                                     upload_to=post_image_file_path)
-    desc = models.CharField(max_length=512, blank=True, null=True)
+    desc = models.CharField(max_length=1024, blank=True, null=True)
     content = models.TextField(null=True, blank=True)
     tags = models.ManyToManyField('Tag', blank=True)
     updated_at = models.DateTimeField(auto_now=True, auto_now_add=False)
@@ -110,7 +109,7 @@ class Post(models.Model):
 
 class Tag(models.Model):
     """Tag for filtering post."""
-    name = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=255)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL,
                                    on_delete=models.CASCADE,
                                    )
@@ -123,8 +122,8 @@ class Image(models.Model):
     """Tag for filtering post."""
     image = models.ImageField(null=True, blank=True,
                               upload_to=post_image_file_path)
-    on_post = models.ForeignKey(Post, related_name='images',
-                                on_delete=models.CASCADE)
+    # on_post = models.ForeignKey(Post, related_name='images',
+    #                             on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.image)

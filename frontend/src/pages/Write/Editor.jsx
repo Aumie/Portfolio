@@ -1,16 +1,24 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ImageResize from 'quill-image-resize-module-react'
 import { Quill as RQuil } from 'react-quill'
 import { useQuill } from 'react-quilljs'
 import hljs from 'highlight.js'
-import './dracula.css'
-
 // or const { useQuill } = require('react-quilljs');
-
+import Qimage from 'quill/formats/image'
 import 'quill/dist/quill.snow.css' // Add css for snow theme
+import { axiosInstance } from '../../utils'
 // or import 'quill/dist/quill.bubble.css'; // Add css for bubble theme
 
-export const Editor = () => {
+export const Editor = ({
+  content,
+  setContent,
+  images,
+  setImages,
+  previews,
+  setPreviews,
+  index,
+  setIndex,
+}) => {
   const theme = 'snow'
   // const theme = 'bubble';
   hljs.configure({
@@ -85,21 +93,44 @@ export const Editor = () => {
   if (Quill && !quill) {
     // For execute this line only once.
     Quill.register('modules/imageResize', ImageResize)
+    // Quill.register('modules/formats', Qimage)
   }
 
-  const insertToEditor = (url) => {
-    const range = quill.getSelection()
-    quill.insertEmbed(range.index, 'image', url)
-  }
+  const [uploaded, setUploaded] = useState(null)
 
+  // useEffect(() => {
+  //   console.log(uploaded)
+  //   // insertToEditor(uploaded)
+  //   let range = quill.getSelection()
+  //   let position = range ? range.index : 0
+  //   quill.insertEmbed(position, 'image', {
+  //     src: uploaded.image,
+  //     alt: uploaded.path,
+  //   })
+  //   quill.setSelection(position + 1)
+  // }, [uploaded])
   // Upload Image to Image Server such as AWS S3, Cloudinary, Cloud Storage, etc..
   const saveToServer = async (file) => {
     const body = new FormData()
-    body.append('file', file)
-    console.log('saved to Server')
-    // const res = await fetch('Your Image Server URL', { method: 'POST', body })
-    // insertToEditor(res.uploadedImageUrl)
-    insertToEditor('/test/card.jpg')
+    body.append('image', file)
+    // console.log(file)
+    // console.log(body)
+    axiosInstance.defaults.headers.common['Content-Type'] =
+      'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
+    // axiosInstance.defaults.headers.common['Accept'] =
+    //   'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
+
+    // const res = await axiosInstance.post('/blogs/image/', body)
+    axiosInstance.post('/blogs/image/', body).then((res) => {
+      let range = quill.getSelection()
+      let position = range ? range.index : 0
+      quill.insertEmbed(position, 'image', {
+        src: res.data.image,
+        alt: res.data.path,
+      })
+    })
+    // console.log(res)
+    // setUploaded(res.data)
   }
 
   // Open Dialog to select Image File
@@ -111,20 +142,24 @@ export const Editor = () => {
 
     input.onchange = () => {
       const file = input.files[0]
+      // console.log(file)
       saveToServer(file)
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (quill) {
       // Add custom handler for Image Upload
       quill.getModule('toolbar').addHandler('image', selectLocalImage)
+      quillRef.current.firstChild.innerHTML =
+        content != undefined ? content : null
       quill.on('text-change', (delta, oldDelta, source) => {
-        console.log('Text change!')
-        console.log(quill.getText()) // Get text only
-        console.log(quill.getContents()) // Get delta contents
-        console.log(quill.root.innerHTML) // Get innerHTML using quill
-        console.log(quillRef.current.firstChild.innerHTML) // Get innerHTML using quillRef
+        // console.log('Text change!')
+        // console.log(quill.getText()) // Get text only
+        // console.log(quill.getContents()) // Get delta contents
+        // console.log(quill.root.innerHTML) // Get innerHTML using quill
+        // console.log(quillRef.current.firstChild.innerHTML) // Get innerHTML using quillRef
+        setContent(quillRef.current.firstChild.innerHTML)
       })
     }
   }, [quill])

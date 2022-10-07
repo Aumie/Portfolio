@@ -57,7 +57,7 @@ export const Home = () => {
             <div className='d-flex justify-content-end'>
               <p>
                 <Link
-                  to={'/blogs/?tags=project'}
+                  to={'/blog/?tags=project'}
                   className='rgb'
                   style={{ color: 'var(--clr-font)' }}
                 >
@@ -71,8 +71,8 @@ export const Home = () => {
               <div className='article-wrapper'>
                 <div className='blog-label'>
                   <div className='home-label rgb'>
-                    <Link to={'/blogs'}>
-                      <h4 className='home-label-title'>BLOGs</h4>
+                    <Link to={'/blog'}>
+                      <h4 className='home-label-title'>BLOG</h4>
                     </Link>
                   </div>
                 </div>

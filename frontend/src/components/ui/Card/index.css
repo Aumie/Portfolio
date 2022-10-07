@@ -1,3 +1,8 @@
 .view-link {
   color: var(--clr-pallete-2);
 }
+/* small {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+} */

@@ -7,7 +7,7 @@
 # )
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
-from requests import Response
+from rest_framework.response import Response
 
 from core.models import Image, Post, Tag
 from posts.serializers import (
@@ -16,12 +16,12 @@ from posts.serializers import (
 from rest_framework import viewsets, mixins, status
 # from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-# from rest_framework.decorators import action
+from rest_framework.decorators import action
 # from rest_framework.response import Response
 from django.core.exceptions import PermissionDenied
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.parsers import MultiPartParser
-# from rest_framework.decorators import parser_classes
+from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.decorators import parser_classes
 # Create your views here.
 from django.shortcuts import get_object_or_404
 
@@ -47,6 +47,10 @@ class SetPagination(PageNumberPagination):
 tags_param = openapi.Parameter(
     'tags', openapi.IN_QUERY,
     description="Comma seperated list of tag\'s name to filter",
+    type=openapi.TYPE_STRING)
+slug_param = openapi.Parameter(
+    'slug', openapi.IN_QUERY,
+    description="Use slug instead of id",
     type=openapi.TYPE_STRING)
 post_response = openapi.Response('response description', PostSerializer)
 
@@ -77,17 +81,25 @@ class PostViewSet(viewsets.ModelViewSet):
         # query_params.get return string if not any return None
         tags = self.request.query_params.get('tags')
         published = self.request.query_params.get('published')
+        post = self.request.query_params.get('post')
+        latest = self.request.query_params.get('latest')
         queryset = self.queryset
-
         queryset = queryset.filter(published=True)
 
         if published and self.request.user.is_authenticated:
             queryset = Post.objects.all().filter(published=published, author=self.request.user)
+        if post:
+            queryset = queryset.filter(slug=post)
         if tags:
             tag_name = self._params_to_arrays(tags)
             queryset = queryset.filter(tags__name__in=tag_name)
 
-        return queryset.order_by('-id').distinct()
+        # if latest == 'latest':
+        #     return queryset.order_by('-updated_at').distinct()
+        # elif latest == 'oldest':
+        #     return queryset.order_by('updated_at').distinct()
+
+        return queryset.order_by('-updated_at').distinct()
 
     def get_serializer_class(self):
         """Return the serializer class for request"""
@@ -113,6 +125,16 @@ class PostViewSet(viewsets.ModelViewSet):
             return super().update(request, *args, **kwargs)
 
         raise PermissionDenied
+
+    @swagger_auto_schema(
+        operation_description="GET /blogs/post/{slug}}/",
+        manual_parameters=[slug_param],
+        responses={200: post_response},
+        required=['slug']
+
+    )
+    def retrieve(self, request, *args, **kwargs):
+        return super().retrieve(request, *args, **kwargs)
 
     # def retrieve(self, request, slug, *args, **kwargs):
     #     instance = get_object_or_404(self.queryset, slug=slug)
@@ -145,13 +167,23 @@ class MixinsViewSet(mixins.DestroyModelMixin,
 
 class TagViewSet(MixinsViewSet):
     serializer_class = TagSerializer
-    queryset = Tag.objects.all()
+    queryset = Tag.objects.all().order_by('name')
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
+
+    def create(self, request, *args, **kwargs):
+        if 'name' not in self.request.data:
+            return Response({'error': 'name must be provided.'},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+        if self.queryset.filter(name=self.request.data['name']).exists():
+            return Response({'error': 'Tag must be unique.'},
+                            status=status.HTTP_400_BAD_REQUEST)
+        return super().create(request, *args, **kwargs)
 
 
 class ImageViewSet(MixinsViewSet):
     serializer_class = ImageSerializer
     queryset = Image.objects.all()
-    parser_classes = (MultiPartParser,)
+    parser_classes = (MultiPartParser, FormParser)

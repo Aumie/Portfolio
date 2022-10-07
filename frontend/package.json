@@ -13,6 +13,7 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.2.1",
     "highlight.js": "^11.6.0",
+    "html-react-parser": "^3.0.4",
     "moment": "^2.29.4",
     "quill-blot-formatter": "^1.0.5",
     "quill-image-resize-module-react": "^3.0.0",

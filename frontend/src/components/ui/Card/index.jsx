@@ -9,7 +9,10 @@ export const Card = ({ parent, obj }) => {
 
   return (
     <React.Fragment>
-      <div className='card mb-3 card-body-shadow mt-2 card-section'>
+      <div
+        className='card mb-3 card-body-shadow mt-2 card-section'
+        style={{ background: 'var(--card-bg)' }}
+      >
         <div className='row g-0'>
           <div
             className='col-md-4 row row-cols-1'
@@ -26,7 +29,7 @@ export const Card = ({ parent, obj }) => {
                   className='img-fluid rounded-start '
                   style={
                     parent == 'home'
-                      ? { width: '260px', height: '140px' }
+                      ? { width: '220px', height: '120px', objectFit: 'cover' }
                       : { width: '100px', height: '100px' }
                   }
                   alt='...'
@@ -45,7 +48,7 @@ export const Card = ({ parent, obj }) => {
                 {/* {parent == 'home' ? obj.desc : info.desc} */}
                 {obj.desc}
               </p>
-              <div className='d-flex justify-content-bottom'>
+              <div className='d-flex'>
                 <p className='card-text flex-grow-1'>
                   <small className='text-muted'>
                     {parent == 'home'
@@ -55,7 +58,7 @@ export const Card = ({ parent, obj }) => {
                 </p>
                 <p>
                   <Link
-                    to={parent == 'home' ? `/blogs/post/${obj.slug}` : '#'}
+                    to={parent == 'home' ? `/blog/post/${obj.slug}` : '#'}
                     style={{ color: 'var(--clr-pallete-5)' }}
                     onClick={
                       parent == 'cert'
@@ -74,7 +77,7 @@ export const Card = ({ parent, obj }) => {
           </div>
         </div>
       </div>
-      {console.log(obj.file)}
+      {/* {console.log(obj.file)} */}
       {showModal ? (
         <Modal showModal={showModal} setShowModal={setShowModal}>
           <iframe height='100%' width='100%' src={obj.file} />

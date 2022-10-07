@@ -13,8 +13,8 @@ export const links = [
 
   {
     id: 4,
-    url: '/blogs',
-    text: 'blogs',
+    url: '/blog',
+    text: 'blog',
   },
   {
     id: 5,

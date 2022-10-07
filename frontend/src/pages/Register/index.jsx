@@ -59,11 +59,17 @@ export const Register = () => {
           placeholder='password'
           name='password'
           onChange={handleChange}
+          onKeyDown={(e) => {
+            e.key === 'Enter' ? document.getElementById('login').click() : {}
+          }}
         />
         <button onClick={handleSubmit}>Register</button>
         {err && getResError(err).map((v, k) => <p key={k}>{v}</p>)}
         <span>
-          Do you have an account <Link to='/login'>Login</Link>
+          Do you have an account{' '}
+          <Link to='/login' id='login'>
+            Login
+          </Link>
         </span>
       </form>
     </div>

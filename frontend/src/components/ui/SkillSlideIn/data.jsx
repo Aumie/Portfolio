@@ -31,8 +31,8 @@ export const skills = [
   },
   {
     title: 'Database',
-    logos: [mysql, postgr, mongo],
-    tooltips: ['MySQL', 'Postgresql', 'MongoDB'],
+    logos: [mysql, postgr],
+    tooltips: ['MySQL', 'Postgresql'],
   },
   {
     title: 'Infrastructure',
