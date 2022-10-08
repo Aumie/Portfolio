@@ -12,6 +12,7 @@ import parse from 'html-react-parser'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.bubble.css'
 import './index.scss'
+import DownloadSection from './DownloadSection'
 export const Detail = () => {
   const { slug } = useParams()
   const [data, setData] = useState({ post: [] })
@@ -74,7 +75,7 @@ export const Detail = () => {
                 <Link to={'edit'}>
                   <FaPencilAlt className='icon' />
                 </Link>
-                <Link to={-1} onClick={handleDelete}>
+                <Link to={'/blog'} onClick={handleDelete}>
                   <FaTrashAlt className='icon' />
                 </Link>
               </div>
@@ -88,8 +89,14 @@ export const Detail = () => {
             theme={'bubble'}
           /> */}
           {/* <div dangerouslySetInnerHTML={{ __html: data.post.content }}></div> */}
+          <div className='tags'>
+            {data.post.tags.map((t) => (
+              <span className='rgb'>{t.name}</span>
+            ))}
+          </div>
         </div>
       </div>
+      <DownloadSection files={data.post.files} />
       <MiniPostMenu />
     </ThreeColumns>
   )

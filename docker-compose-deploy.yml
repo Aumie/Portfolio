@@ -1,0 +1,70 @@
+version: '3.9'
+
+services:
+  proxy:
+    build:
+      context: ./proxy
+    restart: always
+    depends_on:
+      - react
+      - django-api
+    ports:
+      - 80:8000
+      - 443:443
+      # - 8000:8000
+    volumes:
+      - static-data:/vol/static
+      - react-build:/var/www/react
+      - ./proxy/certbot/conf:/etc/letsencrypt
+      - ./proxy/certbot/www:/var/www/certbot
+
+  certbot:
+    image: certbot/certbot
+    restart: always
+    volumes:
+      - ./proxy/certbot/conf:/etc/letsencrypt
+      - ./proxy/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+  react:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - django-api
+    volumes:
+      - react-build:/app/dist
+
+  django-api:
+    build:
+      context: ./backend
+      # args:
+      #   - DEV=true
+    restart: always
+    volumes:
+      - static-data:/vol/web
+    environment:
+      - DB_HOST=db
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - SECRET_KEY=${DJANGO_SECRET_KEY}
+      - ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
+      # - DEBUG=1
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13-alpine
+    restart: always
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+
+volumes:
+  static-data:
+  postgres-data:
+  react-build:
