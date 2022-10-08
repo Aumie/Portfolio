@@ -1,10 +1,23 @@
+from email.policy import default
+from random import choices
 from rest_framework import serializers
 
 
 from core.models import (
-    Post, Tag, Image, User
+    Post, Tag, Image, User, File
 )
 from users.serializers import UserSerializer
+
+
+class FileSerializer(serializers.ModelSerializer):
+    owner = UserSerializer()
+
+    class Meta:
+        model = File
+        fields = ['id', 'os', 'name', 'file',
+                  'owner'
+                  ]
+        read_only_fields = ['id']
 
 
 class ImageSerializer(serializers.ModelSerializer):
@@ -61,10 +74,14 @@ class PostDetailSerializer(PostSerializer):
         read_only=True)
     # images = serializers.SlugRelatedField(
     #     many=True, read_only=True, slug_field='path')
+    # files = serializers.SlugRelatedField(
+    #     many=True, read_only=True, slug_field='path')
+    files = FileSerializer(many=True, required=False)
 
     class Meta(PostSerializer.Meta):
         fields = PostSerializer.Meta.fields + \
             ['content',
+             'files',
              #  'images'
              ]
 

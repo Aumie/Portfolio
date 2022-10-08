@@ -20,13 +20,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&9w^xuq!)_$opn88@)+4w8k32)_j+5mjnq6y55&1atvao4-mvs'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'changeme')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.environ.get('DEBUG', 0)))
 
 ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS.extend(
+    filter(
+        None,
+        os.environ.get('ALLOWED_HOSTS', '').split(',')
+    )
+)
 
 # Application definition
 
@@ -152,11 +157,11 @@ CORS_ALLOW_CREDENTIALS = True
 
 # X_FRAME_OPTIONS = 'DENY'
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
-    'http://127.0.0.1:5173'
+    'http://localhost:4173',
+    'http://127.0.0.1:4173'
 ]
 # change to https://app.example.com in production settings
-CORS_ORIGIN_WHITELIST = ['http://localhost:5173']
+CORS_ORIGIN_WHITELIST = ['http://localhost:4173']
 
 
 REST_FRAMEWORK = {

@@ -5,7 +5,7 @@ from core.models import AumFile, AumImage
 # translation - to automatically change language
 # if we change value of the language in setting
 # Register your models here.
-from core.models import Post, Tag, Image, User
+from core.models import Post, Tag, Image, User, File
 
 
 class UserAdmin(BaseUserAdmin):
@@ -62,5 +62,6 @@ admin.site.register(User, UserAdmin)
 admin.site.register(Post, PostModelAdmin)
 admin.site.register(Tag)
 admin.site.register(Image)
+admin.site.register(File)
 admin.site.register(AumFile)
 admin.site.register(AumImage)

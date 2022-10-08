@@ -39,3 +39,41 @@ s {
 //     grid-row: 1;
 //   }
 // }
+
+hr {
+  position: relative;
+  top: 20px;
+  border: none;
+  height: 3px;
+  background: var(--clr-pallete-5);
+  margin-bottom: 30px;
+}
+
+.download {
+  display: flex;
+  margin-top: 10px;
+  button {
+    margin: 0 10px 0 10px;
+    border-radius: 5px;
+    background: var(--clr-pallete-5);
+    color: white;
+    border-color: white;
+    span {
+      padding-left: 1px;
+      a {
+        color: white;
+      }
+    }
+  }
+  button:hover {
+    color: var(--clr-pallete-7);
+  }
+}
+.tags {
+  span {
+    padding: 0 2px 0 2px;
+    border: 1px groove;
+    border-color: var(--clr-pallete-5);
+    border-radius: 3px;
+  }
+}

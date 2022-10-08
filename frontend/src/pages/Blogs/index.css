@@ -73,6 +73,7 @@ Post
 }
 .tag {
   border: 1px solid var(--clr-pallete-7);
+  border-radius: 3px;
   padding: 0 4px 0 4px;
   font-size: 12px;
 }

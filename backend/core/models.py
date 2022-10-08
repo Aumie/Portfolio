@@ -1,6 +1,7 @@
 """
 Database models.
 """
+from unittest.util import _MAX_LENGTH
 import uuid
 import os
 from django.conf import settings
@@ -19,6 +20,12 @@ from django.utils.translation import gettext_lazy as _
 def aum_file_path(instance, filename):
     """Generate filepath for aum's file."""
     return os.path.join('uploads', 'AumProfile',
+                        filename)
+
+
+def file_path(instance, filename):
+    """Generate filepath for aum's file."""
+    return os.path.join('uploads', 'files',
                         filename)
 
 
@@ -92,6 +99,7 @@ class Post(models.Model):
     desc = models.CharField(max_length=1024, blank=True, null=True)
     content = models.TextField(null=True, blank=True)
     tags = models.ManyToManyField('Tag', blank=True)
+    files = models.ManyToManyField('File', blank=True)
     updated_at = models.DateTimeField(auto_now=True, auto_now_add=False)
     created_at = models.DateTimeField(auto_now=False, auto_now_add=True)
     published = models.BooleanField(default=False)
@@ -131,6 +139,23 @@ class Image(models.Model):
     @property
     def path(self) -> str:
         return str(self.image)
+
+
+class File(models.Model):
+    os = models.CharField(max_length=32)
+    file = models.FileField(upload_to=file_path)
+    owner = models.ForeignKey('User', on_delete=models.CASCADE)
+
+    @property
+    def path(self) -> str:
+        return str(self.file)
+
+    @property
+    def name(self) -> str:
+        return str(self.file).split('/')[-1]
+
+    def __str__(self):
+        return self.name
 
 
 class AumImage(models.Model):
