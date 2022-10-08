@@ -3,28 +3,34 @@
 #}
 server {
     listen 80;
-    server_name aumidev.me;
+    server_name aumidev.me www.aumidev.me;
     server_tokens off;
 
-    location /.well-known/acme-challenge/ {
-        root /var/www/certbot;
-    }
+    return 301 https://$server_name$request_uri;
 
-    location / {
-        return 301 https://$host$request_uri;
-    }
+#    location /.well-known/acme-challenge/ {
+#        root /var/www/certbot;
+#    }
+
+#    location / {
+#        return 301 https://$host$request_uri;
+#    }
 }
 
 server {
 #    listen ${LISTEN_PORT};
     listen 443 ssl;
-    server_name aumidev.me;
+    server_name aumidev.me www.aumidev.me;
     server_tokens off;
 
-    ssl_certificate /etc/letsencrypt/live/aumidev.me/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/aumidev.me/privkey.pem;
-    include /etc/letsencrypt/options-ssl-nginx.conf;
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+    ssl_certificate /etc/cert/aumidev_me_chain.crt;
+
+    ssl_certificate_key /etc/cert/private.key;
+
+#    ssl_certificate /etc/letsencrypt/live/aumidev.me/fullchain.pem;
+#    ssl_certificate_key /etc/letsencrypt/live/aumidev.me/privkey.pem;
+#    include /etc/letsencrypt/options-ssl-nginx.conf;
+#    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
     client_max_body_size 20M;
 
