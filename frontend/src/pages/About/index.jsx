@@ -43,7 +43,7 @@ export const About = () => {
         <Tabs jobs={jobs} value={value} setValues={setValues} />
         <SkillSlideIn />
         <EducationCard />
-        <Languages />
+        <Languages files={files} />
         <Certificates images={images} files={files} />
       </ThreeColumns>
     </div>

@@ -10,7 +10,7 @@ server {
     location / {
          return 301 https://$server_name$request_uri;
     }
-    return 301 https://$host$request_uri;
+#    return 301 https://$host$request_uri;
 
 #    location /.well-known/acme-challenge/ {
 #        root /var/www/certbot;

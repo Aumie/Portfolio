@@ -182,7 +182,8 @@ CORS_ORIGIN_WHITELIST = [
     'http://aumidev.me',
 
 ]
-CSRF_TRUSTED_ORIGINS = ['https://aumidev.me','http://aumidev.me']
+# for django 4++
+CSRF_TRUSTED_ORIGINS = ['https://aumidev.me', 'http://aumidev.me']
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',

@@ -4,6 +4,7 @@ import axios from 'axios'
 // const baseURL = 'http://localhost:8000/api/'
 var baseURL = 'https://localhost/api/'
 
+// dynamic url on dev,build,production
 if (
   window.location.origin === 'http://localhost:4173' ||
   window.location.origin === 'http://localhost:5173'

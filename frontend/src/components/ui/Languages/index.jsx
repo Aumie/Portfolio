@@ -3,8 +3,14 @@ import './index.css'
 import { Fade, Slide } from 'react-awesome-reveal'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
+import { useState } from 'react'
 
-export const Languages = () => {
+export const Languages = ({ files }) => {
+  const [showJModal, setShowJModal] = useState(false)
+  const [showEModal, setShowEModal] = useState(false)
+  const jap = files.filter((f) => f.name[0].toLowerCase == 'j')[0]
+  const eng = files.filter((f) => f.name[0].toLowerCase == 'e')[0]
+
   return (
     <React.Fragment>
       <div className='p-2 mx-auto text-center mt-5'>
@@ -65,6 +71,16 @@ export const Languages = () => {
           </div>
         </div>
       </div>
+      {showEModal ? (
+        <Modal showModal={showEModal} setShowModal={setShowEModal}>
+          <iframe height='100%' width='100%' src={eng} />
+        </Modal>
+      ) : null}
+      {showJModal ? (
+        <Modal showModal={showJModal} setShowModal={setShowJModal}>
+          <iframe height='100%' width='100%' src={jap} />
+        </Modal>
+      ) : null}
     </React.Fragment>
   )
 }
