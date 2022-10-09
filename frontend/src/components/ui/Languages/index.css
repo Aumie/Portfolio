@@ -4,3 +4,6 @@
 .lang {
   color: var(--clr-font);
 }
+.lang:hover {
+  cursor: pointer;
+}

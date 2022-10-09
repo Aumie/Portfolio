@@ -3,6 +3,9 @@ import { FaWindows, FaApple } from 'react-icons/fa'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 export default function DownloadSection({ files }) {
+  if (files==[]){ 
+   return <></>
+  }
   return (
     <>
       <hr className='rgb' />
