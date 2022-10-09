@@ -165,6 +165,8 @@ CORS_ALLOWED_ORIGINS = [
     'https://localhost',
     'http://www.aumidev.me',
     'https://www.aumidev.me',
+    'https://aumidev.me',
+    'https://aumidev.me',
 ]
 # change to https://app.example.com in production settings
 CORS_ORIGIN_WHITELIST = [
@@ -176,9 +178,11 @@ CORS_ORIGIN_WHITELIST = [
     'https://localhost',
     'http://www.aumidev.me',
     'https://www.aumidev.me',
+    'https://aumidev.me',
+    'http://aumidev.me',
 
 ]
-CSRF_TRUSTED_ORIGINS = ['https://www.aumidev.me']
+CSRF_TRUSTED_ORIGINS = ['https://aumidev.me','http://aumidev.me']
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
