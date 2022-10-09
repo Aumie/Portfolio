@@ -15,16 +15,16 @@ services:
     volumes:
       - static-data:/vol/static
       - react-build:/var/www/react
-      - ./proxy/certbot/conf:/etc/letsencrypt
-      - ./proxy/certbot/www:/var/www/certbot
+      # - ./proxy/certbot/conf:/etc/letsencrypt
+      # - ./proxy/certbot/www:/var/www/certbot
 
-  certbot:
-    image: certbot/certbot
-    restart: always
-    volumes:
-      - ./proxy/certbot/conf:/etc/letsencrypt
-      - ./proxy/certbot/www:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+  # certbot:
+  #   image: certbot/certbot
+  #   restart: always
+  #   volumes:
+  #     - ./proxy/certbot/conf:/etc/letsencrypt
+  #     - ./proxy/certbot/www:/var/www/certbot
+  #   entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
   react:
     build:
