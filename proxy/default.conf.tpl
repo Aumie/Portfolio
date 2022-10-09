@@ -3,28 +3,28 @@
 #}
 server {
     listen ${LISTEN_PORT};
-    server_name aumidev.me www.aumidev.me;
+#    server_name aumidev.me www.aumidev.me;
 #    server_name _;
     server_tokens off;
 
-    location / {
-         return 301 https://$server_name$request_uri;
-    }
+#    location / {
+#         return 301 https://$server_name$request_uri;
+#    }
 #    return 301 https://$host$request_uri;
 
 #    location /.well-known/acme-challenge/ {
 #        root /var/www/certbot;
 #    }
 
-#    location / {
-#        return 301 https://$host$request_uri;
-#    }
+    location / {
+        return 301 https://$host$request_uri;
+    }
 }
 
 server {
 #    listen ${LISTEN_PORT};
     listen 443 ssl;
-    server_name aumidev.me www.aumidev.me;
+#    server_name aumidev.me www.aumidev.me;
 #    server_name _;
     server_tokens off;
 
