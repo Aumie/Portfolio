@@ -29,7 +29,7 @@ export const Card = ({ parent, obj }) => {
                   className='img-fluid rounded-start '
                   style={
                     parent == 'home'
-                      ? { width: '220px', height: '120px', objectFit: 'cover' }
+                      ? { width: '100%', height: '120px', objectFit: 'cover' }
                       : { width: '100px', height: '100px' }
                   }
                   alt='...'
