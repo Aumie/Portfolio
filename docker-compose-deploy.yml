@@ -39,8 +39,8 @@ services:
   django-api:
     build:
       context: ./backend
-      # args:
-      #   - DEV=true
+      args:
+      - DEV=true
     restart: always
     volumes:
       - static-data:/vol/web
@@ -51,7 +51,7 @@ services:
       - DB_PASS=${DB_PASS}
       - SECRET_KEY=${DJANGO_SECRET_KEY}
       - ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
-      # - DEBUG=1
+      - DEBUG=1
     depends_on:
       - db
 
