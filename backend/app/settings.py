@@ -178,7 +178,7 @@ CORS_ORIGIN_WHITELIST = [
     'https://www.aumidev.me',
 
 ]
-
+CSRF_TRUSTED_ORIGINS = ['https://www.aumidev.me']
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
