@@ -30,15 +30,19 @@ export const Home = () => {
         <div className='container text-center'>
           <div className='p-5 mb-4 rounded-3'>
             <div className='py-5'>
-              <h1 className='display-5 fw-bold'>Custom jumbotron</h1>
+              <h1 className='display-5 fw-bold'>Hi, I'm Peerapat (Aum)</h1>
               <p className='fs-4'>
-                <span className='tab'></span>Using a series of utilities, you
-                can create this jumbotron, just like the one in previous
-                versions of Bootstrap. Check out the examples below for how you
-                can remix and restyle it to your liking.
+                <span className='tab'>
+                  After some reflection for a while, it has come to a conclusion
+                  that what I have been looking for is to work in the game
+                  industry.
+                  <p>My first step upon this journey is in your hand.</p>
+                </span>
               </p>
               <button className='btn btn-warning rgb' type='button'>
-                CV Download
+                <a href='https://aumidev.me/static/media/uploads/AumProfile/cv_Peerapat_Channak.pdf'>
+                  CV Download
+                </a>
               </button>
             </div>
           </div>

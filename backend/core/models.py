@@ -166,6 +166,9 @@ class AumImage(models.Model):
     image = models.ImageField(upload_to=aum_file_path,
                               null=True, blank=True)
 
+    def __str__(self) -> str:
+        return str(self.title)
+
 
 class AumFile(models.Model):
     title = models.CharField(max_length=120, blank=True, null=True)
@@ -174,3 +177,6 @@ class AumFile(models.Model):
     file_for = models.CharField(max_length=255)
     file = models.FileField(upload_to=aum_file_path,
                             null=True, blank=True)
+
+    def __str__(self) -> str:
+        return str(self.file).split('/')[-1]

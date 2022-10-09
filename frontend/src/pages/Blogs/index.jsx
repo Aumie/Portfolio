@@ -172,7 +172,7 @@ export const Blogs = () => {
                 )
               })}
               {loading && <h2 className='loading'>Loading...</h2>}
-              {!isNext && <h4>No more older posts...</h4>}
+              {!isNext && !loading?<h4>No more older posts...</h4>:null}
             </article>
           </div>
         </section>
