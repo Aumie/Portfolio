@@ -2,11 +2,15 @@
 #   server django-api:8000;
 #}
 server {
-    listen 80;
+    listen ${LISTEN_PORT};
     server_name aumidev.me www.aumidev.me;
+#    server_name _;
     server_tokens off;
 
-    return 301 https://$server_name$request_uri;
+    location / {
+         return 301 https://$server_name$request_uri;
+    }
+#    return 301 https://$host$request_uri;
 
 #    location /.well-known/acme-challenge/ {
 #        root /var/www/certbot;
@@ -21,6 +25,7 @@ server {
 #    listen ${LISTEN_PORT};
     listen 443 ssl;
     server_name aumidev.me www.aumidev.me;
+#    server_name _;
     server_tokens off;
 
     ssl_certificate /etc/cert/aumidev_me_chain.crt;

@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 // const baseURL = 'http://localhost:8000/api/'
-const baseURL = 'http://localhost/api/'
+const baseURL = 'https://localhost/api/'
 
 export const axiosInstance = axios.create({
   baseURL: baseURL,
