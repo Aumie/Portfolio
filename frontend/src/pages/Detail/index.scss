@@ -16,6 +16,12 @@
   counter-reset: line;
   box-shadow: 0.5px 0.5px 0.5px 0.5px #f4aab9, -0.5px 0px 0.5px 0.5px #0893d8;
 }
+.content {
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+}
 
 /* .ql-syntax ::before {
   counter-increment: line;

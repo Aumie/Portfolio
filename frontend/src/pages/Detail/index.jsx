@@ -96,7 +96,7 @@ export const Detail = () => {
           </div>
         </div>
       </div>
-      <DownloadSection files={data.post.files} />
+      {data.post.files && <DownloadSection files={data.post.files} />}
       <MiniPostMenu />
     </ThreeColumns>
   )
