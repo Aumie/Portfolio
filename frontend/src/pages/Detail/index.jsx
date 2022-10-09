@@ -96,7 +96,9 @@ export const Detail = () => {
           </div>
         </div>
       </div>
-      {data.post.files != [] && <DownloadSection files={data.post.files} />}
+      {data.post.files.length >= 1 && (
+        <DownloadSection files={data.post.files} />
+      )}
       <MiniPostMenu />
     </ThreeColumns>
   )

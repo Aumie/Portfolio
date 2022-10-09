@@ -157,6 +157,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 # X_FRAME_OPTIONS = 'DENY'
 CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
     'http://localhost:4173',
     'http://127.0.0.1:4173',
     'https://localhost:4173',
@@ -170,6 +171,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 # change to https://app.example.com in production settings
 CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5173',
     'http://localhost:4173',
     'https://localhost:4173',
     'http://127.0.0.1:4173',

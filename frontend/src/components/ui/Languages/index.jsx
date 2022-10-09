@@ -37,9 +37,15 @@ export const Languages = ({ files }) => {
                       </Tooltip>
                     }
                   >
-                    <a href=''>
-                      <h3 className='lang-underline lang'>English</h3>
-                    </a>
+                    <h3
+                      className='lang-underline lang'
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setshowEModal(true)
+                      }}
+                    >
+                      English
+                    </h3>
                   </OverlayTrigger>
                 </Fade>
               </div>
@@ -61,9 +67,15 @@ export const Languages = ({ files }) => {
                       </Tooltip>
                     }
                   >
-                    <a href=''>
-                      <h3 className='lang-underline lang'>Japanese</h3>
-                    </a>
+                    <h3
+                      className='lang-underline lang'
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setshowJModal(true)
+                      }}
+                    >
+                      Japanese
+                    </h3>
                   </OverlayTrigger>
                 </Fade>
               </div>
