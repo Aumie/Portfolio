@@ -10,6 +10,13 @@ export default defineConfig({
   server: {
     host: true,
   },
+  // will transform require to import
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
+  },
+  // below work on dev mode
   optimizeDeps: {
     esbuildOptions: {
       plugins: [esbuildCommonjs(['react-quilljs'])],
