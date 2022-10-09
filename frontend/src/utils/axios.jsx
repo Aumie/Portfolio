@@ -2,7 +2,16 @@ import React from 'react'
 import axios from 'axios'
 
 // const baseURL = 'http://localhost:8000/api/'
-const baseURL = 'https://localhost/api/'
+var baseURL = 'https://localhost/api/'
+
+if (
+  window.location.origin === 'http://localhost:4173' ||
+  window.location.origin === 'http://localhost:5173'
+) {
+  baseURL = 'http://127.0.0.1:8000/api/'
+} else {
+  baseURL = window.location.origin + '/api/'
+}
 
 export const axiosInstance = axios.create({
   baseURL: baseURL,
