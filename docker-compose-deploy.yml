@@ -15,7 +15,7 @@ services:
     volumes:
       - static-data:/vol/static
       - react-build:/var/www/react
-      - /etc/cert:/etc/cert
+      - ./proxy/cert:/etc/cert
       # - ./proxy/certbot/conf:/etc/letsencrypt
       # - ./proxy/certbot/www:/var/www/certbot
 
