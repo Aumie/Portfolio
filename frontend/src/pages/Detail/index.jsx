@@ -44,7 +44,7 @@ export const Detail = () => {
               className='img-cover'
               src={data.post.cover_image}
               alt=''
-              style={{ width: '760px', height: '300px' }}
+              style={{ width: '100%', height: '300px' }}
             />
           )}
           <div className='user'>
