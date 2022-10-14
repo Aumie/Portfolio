@@ -16,10 +16,10 @@ export const EducationCard = () => {
             <div className='card-header card-head'>
               <div className='d-flex'>
                 <div className='card-title flex-grow-1'>
-                  <h5>Card title</h5>
+                  <h5>Thai-Nichi Institute of Technology</h5>
                 </div>
                 <div className='card-time text-muted'>
-                  <small className='time'>time</small>
+                  <small className='time'>2017 - 2021</small>
                 </div>
               </div>
             </div>
@@ -33,23 +33,22 @@ export const EducationCard = () => {
                 style={{ height: '6em' }}
               />
             </div>
-            <div className='d-flex'>
-              <FaAngleDoubleRight className='job-icon mt-1 me-2' />
+            <div>
               <p className='card-text pt-n3' style={{ color: 'black' }}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Mollitia, qui ab! Sequi maiores quam, ducimus maxime facilis
-                sapiente atque, dignissimos quisquam quas ipsa quasi illo
-                veritatis quod illum amet sunt.
+                <FaAngleDoubleRight className='job-icon mt-1 me-2' style={{paddingBottom: '5px'}}/>
+	  	Bachelor of Computer Engineering
               </p>
+              <p className='card-text pt-n3' style={{ color: 'black' }}>
+	        <FaAngleDoubleRight className='job-icon mt-1 me-2' style={{paddingBottom: '5px'}}/>
+	  	GPAX: 3.47/4.00
+	      </p>
             </div>
             <div className='card-btm d-flex justify-content-end'>
-              <div>
-                <JackInTheBox direction='down'>
-                  <a href='https://www.tni.ac.th/home/'>
-                    <button className='btn btn-info rgb '>visit website</button>
-                  </a>
-                </JackInTheBox>
-              </div>
+              <JackInTheBox direction='down'>
+                <a href='https://www.tni.ac.th/home/' target='_blank' >
+                  <button className='btn btn-info rgb ' style={{marginTop:'0px'}}>visit website</button>
+                </a>
+              </JackInTheBox>
             </div>
           </div>
         </div>

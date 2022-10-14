@@ -31,7 +31,12 @@ export const Detail = () => {
   useEffect(() => {
     setdata()
   }, [setData])
-
+  useEffect(() => {
+    document.title = data.post.title
+  },[data])
+  useEffect(() => {
+    document.title = window.location.href
+  },[])
   if (data.post.author === undefined) {
     return <Loading />
   }

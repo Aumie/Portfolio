@@ -4,12 +4,13 @@ import { Fade, Slide } from 'react-awesome-reveal'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 import { useState } from 'react'
+import { Modal } from '../Modal'
 
 export const Languages = ({ files }) => {
   const [showJModal, setShowJModal] = useState(false)
   const [showEModal, setShowEModal] = useState(false)
-  const jap = files?.filter((f) => f?.name[0].toLowerCase == 'j')[0]
-  const eng = files?.filter((f) => f?.name[0].toLowerCase == 'e')[0]
+  const jap = files?.filter((f) => f.title[0].toLowerCase() == 'j')[0]
+  const eng = files?.filter((f) => f.title[0].toLowerCase() == 'e')[0]
 
   return (
     <React.Fragment>
@@ -41,7 +42,7 @@ export const Languages = ({ files }) => {
                       className='lang-underline lang'
                       onClick={(e) => {
                         e.preventDefault()
-                        setshowEModal(true)
+                        setShowEModal(true)
                       }}
                     >
                       English
@@ -71,7 +72,7 @@ export const Languages = ({ files }) => {
                       className='lang-underline lang'
                       onClick={(e) => {
                         e.preventDefault()
-                        setshowJModal(true)
+                        setShowJModal(true)
                       }}
                     >
                       Japanese
@@ -85,12 +86,12 @@ export const Languages = ({ files }) => {
       </div>
       {showEModal ? (
         <Modal showModal={showEModal} setShowModal={setShowEModal}>
-          <iframe height='100%' width='100%' src={eng} />
+          <iframe height='100%' width='100%' src={eng.file} />
         </Modal>
       ) : null}
       {showJModal ? (
         <Modal showModal={showJModal} setShowModal={setShowJModal}>
-          <iframe height='100%' width='100%' src={jap} />
+          <iframe height='100%' width='100%' src={jap.file} />
         </Modal>
       ) : null}
     </React.Fragment>

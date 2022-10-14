@@ -69,6 +69,7 @@ export const Blogs = () => {
     }
   }, [query, querypub])
   useEffect(() => {
+    document.title = "Aum Peerapat"
     if (searchParams.get('tags') != undefined) {
       setPage(1)
       setNext(null)

@@ -32,6 +32,7 @@ export const About = () => {
 
   useEffect(() => {
     fetchData()
+    document.title = "Aum Peerapat"
   }, [])
 
   if (loading) {

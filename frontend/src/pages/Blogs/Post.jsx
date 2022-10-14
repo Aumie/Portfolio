@@ -20,7 +20,7 @@ export const Post = ({ post }) => {
         </header>
         <p className='item-text'>{desc}</p>
       </div>
-      <div className='tags'>
+      <div className='tags' style={{paddingTop:'5px'}}>
         {tags.map((tag, index) => {
           return (
             <label className='tag rgb' key={index}>
