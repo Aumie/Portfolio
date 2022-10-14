@@ -35,8 +35,8 @@ export const Home = () => {
                 <span className='tab'>
                   After some reflection for a while, it has come to a conclusion
                   that what I have been looking for is to work in the game
-                  industry.
-                  <p>My first step upon this journey is in your hand.</p>
+                  industry.&#10;&#13;
+                  My first step upon this journey is in your hand.
                 </span>
               </p>
               <button className='btn btn-warning rgb' type='button'>
