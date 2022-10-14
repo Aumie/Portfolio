@@ -40,7 +40,11 @@ export const Home = () => {
                 </span>
               </p>
               <button className='btn btn-warning rgb' type='button'>
-                <a href='https://aumidev.me/static/media/uploads/AumProfile/cv_Peerapat_Channak.pdf'>
+                <a
+                  href='https://aumidev.me/static/media/uploads/AumProfile/cv_Peerapat_Channak.pdf'
+                  target='_blank'
+                  style={{ color: 'white' }}
+                >
                   CV Download
                 </a>
               </button>
