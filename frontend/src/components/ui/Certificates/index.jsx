@@ -25,7 +25,7 @@ export const Certificates = ({ images, files }) => {
   var certs = []
   certs.push([findCert('HWC', 'Huawei Cloud Certifications', images, files)])
   certs.push([
-    findCert('AWS', 'Amazon Web Services Certification', images, files),
+    findCert('AWS', 'Amazon Web Services Certifications', images, files),
   ])
 
   return (

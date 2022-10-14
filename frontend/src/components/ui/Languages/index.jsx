@@ -8,8 +8,8 @@ import { useState } from 'react'
 export const Languages = ({ files }) => {
   const [showJModal, setShowJModal] = useState(false)
   const [showEModal, setShowEModal] = useState(false)
-  const jap = files?.filter((f) => f.name[0].toLowerCase == 'j')[0]
-  const eng = files?.filter((f) => f.name[0].toLowerCase == 'e')[0]
+  const jap = files?.filter((f) => f?.name[0].toLowerCase == 'j')[0]
+  const eng = files?.filter((f) => f?.name[0].toLowerCase == 'e')[0]
 
   return (
     <React.Fragment>
