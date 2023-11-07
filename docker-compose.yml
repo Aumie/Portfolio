@@ -41,7 +41,16 @@ services:
     volumes:
       - ./frontend:/app
     ports:
-      - 5173:5173
+      - 4173:4173
+
+  three:
+    build:
+      context: ./three
+      dockerfile: Dockerfile
+    volumes:
+      - ./three:/app
+    ports:
+      - 5173:4173
 
 volumes:
   dev-db-data:

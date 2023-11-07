@@ -9,6 +9,7 @@ EXPOSE 4173
 COPY . /app
 RUN npm install
 ENV PATH="/scripts:$PATH"
+ENV NODE_OPTIONS=--max_old_space_size=1024
 
 
 CMD ["run.sh"]

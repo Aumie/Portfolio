@@ -1,0 +1,40 @@
+.info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	color: black;
+	cursor: auto;
+
+	.bg {
+		z-index: 998;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		// width: 30%;
+		background: white;
+		width: 400px;
+
+		// @include mobile {
+		// 	width: 200px;
+		// }
+		.infoBox {
+			padding: 50px;
+			font-family: 'Major Mono Display', monospace;
+
+			.name {
+			}
+			.nickName {
+				font-size: 18px;
+				margin-top: -20px;
+			}
+			.about {
+				font-family: 'Inter', sans-serif;
+				margin-top: 20px;
+				line-height: 20px;
+			}
+		}
+	}
+}

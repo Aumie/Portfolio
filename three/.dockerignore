@@ -1,0 +1,19 @@
+# git
+.git
+.gitignore
+
+#docker
+.docker
+#node_modules
+node_modules/*
+#pyhton
+app/__pycache__/
+app/*/__pycache__/
+app/*/*/__pycache__/
+app/*/*/*/__pycache__/
+.env/
+.venv/
+venv/
+
+.vscode
+*workspace

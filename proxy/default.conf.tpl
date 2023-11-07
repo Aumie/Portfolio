@@ -39,11 +39,18 @@ server {
 
     client_max_body_size 20M;
 
+    location /interactive {
+      root /var/www/three;
+      index  index.html index.htm;
+      try_files $uri $uri/ /index.html;
+    }
+
     location / {
       root /var/www/react;
       index  index.html index.htm;
       try_files $uri $uri/ /index.html;
     }
+
 
     location /api {
         try_files $uri @proxy_api;

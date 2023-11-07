@@ -1,0 +1,24 @@
+@import url('https://rsms.me/inter/inter.css');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
+html,
+body,
+#root {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	/* background: ivory; */
+	background: #0a0c10;
+	/* color: #fcfeff; */
+	color: #42422b;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+a:hover {
+	scale: 1.2;
+}

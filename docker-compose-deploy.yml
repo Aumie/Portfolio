@@ -8,6 +8,7 @@ services:
     depends_on:
       - react
       - django-api
+      - three
     ports:
       - 80:8000
       - 443:443
@@ -15,6 +16,7 @@ services:
     volumes:
       - static-data:/vol/static
       - react-build:/var/www/react
+      - three-build:/var/www/three
       - ./proxy/cert:/etc/cert
       # - ./proxy/certbot/conf:/etc/letsencrypt
       # - ./proxy/certbot/www:/var/www/certbot
@@ -27,6 +29,22 @@ services:
   #     - ./proxy/certbot/www:/var/www/certbot
   #   entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
+  #https://stackoverflow.com/questions/62852796/javascript-heap-out-of-memory-while-build-react-app-in-docker-container
+  #too much mem consumption, so we build from local then send to server
+  three:
+    image: three:v1.0
+    # build:
+    #   context: ./three
+    #   dockerfile: Dockerfile
+    volumes:
+      - three-build:/app/dist
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+        reservations:
+          memory: 2048M
+
   react:
     build:
       context: ./frontend
@@ -35,12 +53,18 @@ services:
       - django-api
     volumes:
       - react-build:/app/dist
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+        reservations:
+          memory: 512M
 
   django-api:
     build:
       context: ./backend
       args:
-      - DEV=true
+        - DEV=true
     restart: always
     volumes:
       - static-data:/vol/web
@@ -69,3 +93,4 @@ volumes:
   static-data:
   postgres-data:
   react-build:
+  three-build:

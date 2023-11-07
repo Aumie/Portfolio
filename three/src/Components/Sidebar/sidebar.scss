@@ -1,0 +1,59 @@
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	color: black;
+	cursor: auto;
+	font-family: 'Major Mono Display', monospace;
+
+	.bg {
+		z-index: 999;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		background: white;
+		// @include mobile {
+		// 	width: 200px;
+		// }
+
+		.links {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 20px;
+
+			a {
+				font-size: 40px;
+				text-decoration: none;
+				color: inherit;
+				cursor: pointer;
+
+				// @include mobile {
+				// 	font-size: 20px;
+				// }
+			}
+		}
+	}
+
+	button {
+		z-index: 999;
+		position: fixed;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		position: fixed;
+		top: 27px;
+		right: 22px;
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+	}
+}
