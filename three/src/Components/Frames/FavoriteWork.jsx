@@ -6,7 +6,7 @@ import { MeshReflectorMaterial, useTexture } from '@react-three/drei'
 export default function FavoriteWork() {
 	return (
 		<Frame
-			link='favoriteWork'
+			link='favoritework'
 			name={`Favorite\nwork`}
 			bg='#e4cdac'
 			position={[-1.15, 0, 0]}

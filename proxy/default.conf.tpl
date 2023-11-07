@@ -22,6 +22,9 @@ server {
 }
 
 server {
+#    include /etc/nginx/mime.types;
+#    proxy_pass_header Content-Type;
+
 #    listen ${LISTEN_PORT};
     listen 443 ssl;
     server_name aumidev.me www.aumidev.me;
@@ -39,18 +42,47 @@ server {
 
     client_max_body_size 20M;
 
-    location /interactive {
-      root /var/www/three;
-      index  index.html index.htm;
-      try_files $uri $uri/ /index.html;
-    }
+#    location = / {
+#      root /var/www/three;
+#      index  index.html index.htm;
+#      try_files $uri $uri/ /index.html;
+#    }
+
+#    location ~* ^/(.*)$ {
+#        root /var/www/react;
+#        index  index.html index.htm;
+#        try_files $uri $uri/ /index.html;
+#    }
+
+
+#    location /interactive {
+#        root /var/www/three;
+#        index  index.html index.htm;
+#        try_files $uri $uri/ /index.html;
+#         proxy_pass   http://three:4173;
+#    }
+
+    include /etc/nginx/mime.types;
+    default_type application/javascript;
+    index  index.html index.htm;
+
+    #redirect
+    rewrite ^/$ /portfolio permanent;
 
     location / {
-      root /var/www/react;
-      index  index.html index.htm;
-      try_files $uri $uri/ /index.html;
+        root /var/www/react;
+        try_files $uri $uri/ /index.html;
+#        proxy_pass   http://react:4173;
+    }
+    location /portfolio {
+        proxy_pass   http://three:4173;
     }
 
+    # serve static files (js|css|jpg|png|mp4|mp3|glb|woff|svg) blah blah
+    location ~ \.(.*) {
+        root /var/www;
+        try_files $uri /react$uri /three$uri @proxy_api;
+    }
 
     location /api {
         try_files $uri @proxy_api;

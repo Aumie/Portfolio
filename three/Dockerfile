@@ -5,7 +5,7 @@ WORKDIR /app
 COPY ./scripts /scripts
 RUN chmod +x /scripts
 RUN chmod +x /scripts/run.sh
-EXPOSE 5173
+EXPOSE 4173
 
 COPY . /app
 RUN npm install

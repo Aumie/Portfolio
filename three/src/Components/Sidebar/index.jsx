@@ -6,7 +6,7 @@ import useSidebar from '../../Stores/useSidebar'
 
 const variants = {
 	open: {
-		clipPath: 'circle(1400px at calc(100% - 48px) 50px)',
+		clipPath: 'circle(1800px at calc(100% - 48px) 50px)',
 		transition: {
 			type: 'spring',
 			stiffness: 20,

@@ -9,7 +9,7 @@ import './style.css'
 export default function PreferredTools() {
 	return (
 		<Frame
-			link='preferredTools'
+			link='preferredtools'
 			name={`Preferred\ntools`}
 			bg='#d1d1ca'
 			position={[1.15, 0, 0]}
