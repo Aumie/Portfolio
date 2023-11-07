@@ -32,10 +32,10 @@ services:
   #https://stackoverflow.com/questions/62852796/javascript-heap-out-of-memory-while-build-react-app-in-docker-container
   #too much mem consumption, so we build from local then send to server
   three:
-    image: three:v1.0
-    # build:
-    #   context: ./three
-    #   dockerfile: Dockerfile
+    # image: three:v1.0
+    build:
+      context: ./three
+      dockerfile: Dockerfile
     volumes:
       - three-build:/app/dist
     deploy:

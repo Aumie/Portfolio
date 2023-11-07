@@ -7,7 +7,7 @@
 		"dev": "vite",
 		"lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
 		"build": "vite build --base=./",
-		"preview": "vite build && vite preview"
+		"preview": "vite preview"
 	},
 	"dependencies": {
 		"@react-three/drei": "^9.88.7",
