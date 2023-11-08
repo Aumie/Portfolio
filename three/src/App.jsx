@@ -49,6 +49,11 @@ function Overlay() {
 			// else console.log('yet')
 		}, 500)
 	}, [active])
+
+	useEffect(() => {
+		setLocation('/')
+	}, [])
+
 	return (
 		<>
 			{shouldRender && (

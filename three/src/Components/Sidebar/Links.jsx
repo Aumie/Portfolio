@@ -29,7 +29,7 @@ export default function Links() {
 		<motion.div className='links' variants={variants}>
 			{items.map((item) => (
 				<motion.a
-					href={`http://react:4173/${item.toLowerCase()}`}
+					href={`https://aumidev.me/${item.toLowerCase()}`}
 					key={item}
 					variants={itemVariants}
 					whileHover={{ scale: 1.1 }}
