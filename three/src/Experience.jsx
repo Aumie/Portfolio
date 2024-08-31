@@ -44,7 +44,7 @@ export default function Experience() {
 				lineHeight={1}
 				letterSpacing={0}
 			>
-				{`Unreal Engine &\n  ${'  '}Creative Developer`}
+				{`Software Developer`}
 				<meshMatcapMaterial color='white' matcap={matcapTexture} />
 			</Text3D>
 			<Text color={'black'} fontSize={0.1} position-y={-1}>

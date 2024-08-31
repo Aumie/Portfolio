@@ -36,9 +36,9 @@ export const Home = () => {
 								<span
 								// className='tab'
 								>
-									I love everything about 3D.
+									Just an ordinary mortal wandering aimlessly across the vast ocean
 									<br />
-									3D is my lifelong journy.
+                                    known as technology in pursuit of his genuine capabilities through endeavor and perspiration.
 								</span>
 							</p>
 							<button className='btn btn-warning rgb' type='button'>

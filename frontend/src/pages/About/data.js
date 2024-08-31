@@ -1,4 +1,17 @@
 export const job = [
+    {
+		id: 'mJrecILWObon696Nf',
+		order: 4,
+		title: 'Software Engineer',
+		dates: 'Jan 2024 - Current',
+		duties: [
+            "Gathered requirements with a System Analyst",
+			'Mostly, worked with existing project. Maintained and implemented new features.',
+			'Implemented both front-end and back-end',
+			"Supported the customers, when there are issues on the products",
+		],
+		company: 'AloneClone',
+	},
 	{
 		id: 'recIL6mJNfWObon69',
 		order: 3,
