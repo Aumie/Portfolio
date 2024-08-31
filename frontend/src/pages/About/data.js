@@ -10,7 +10,7 @@ export const job = [
 			'Implemented both front-end and back-end',
 			"Supported the customers, when there are issues on the products",
 		],
-		company: 'AloneClone',
+		company: 'Motif',
 	},
 	{
 		id: 'recIL6mJNfWObon69',
