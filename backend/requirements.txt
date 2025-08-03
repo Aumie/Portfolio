@@ -7,4 +7,4 @@ drf-spectacular>=0.24.2,<0.25
 drf-yasg>=1.21.4,<1.22
 Pillow>=9.2.0,<9.3
 psycopg2>=2.9.3,<2.10
-uwsgi>=2.0.20<2.1
+uwsgi>=2.0.20,<2.1
