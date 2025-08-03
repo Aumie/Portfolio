@@ -7,9 +7,9 @@ server {
 #    server_name _;
     server_tokens off;
 
-    location /.well-known/pki-validation/ {
-        root /var/www/cert;
-    }
+#    location /.well-known/pki-validation/ {
+#        root /var/www/cert;
+#    }
 
     location / {
          return 301 https://$server_name$request_uri;
