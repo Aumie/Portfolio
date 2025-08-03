@@ -51,7 +51,7 @@ export default function Info() {
 							</a>
 						</span>
 						<p>
-							<a href='https://aumidev.me/static/media/uploads/AumProfile/cv_Peerapat_Channak.pdf'>
+							<a href='https://peerapat.dev/static/media/uploads/AumProfile/cv_Peerapat_Channak.pdf'>
 								&rarr;Resume
 							</a>
 						</p>

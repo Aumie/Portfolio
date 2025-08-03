@@ -1,5 +1,5 @@
 FROM python:3.10.7-alpine3.16
-LABEL maintainer="aumidev.me"
+LABEL maintainer="peerapat.dev"
 ENV PYTHONONBUFFER 1
 
 ENV LANG=C.UTF-8

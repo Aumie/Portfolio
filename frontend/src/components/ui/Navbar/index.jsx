@@ -60,7 +60,7 @@ export const Navbar = () => {
 		<nav className='navbar navbar-expand-lg rgb'>
 			<div className='container'>
 				{/* brand */}
-				<a href='https://aumidev.me/portfolio' className='ps-0'>
+				<a href='https://peerapat.dev/portfolio' className='ps-0'>
 					<img
 						src={swTheme == 'on' ? logol : logod}
 						alt='logo'

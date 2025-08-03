@@ -1,6 +1,6 @@
 FROM nginxinc/nginx-unprivileged:1-alpine
 # normal image run on the background
-LABEL maintainer="aumidev.me"
+LABEL maintainer="peerapat.dev"
 
 COPY ./default.conf.tpl /etc/nginx/default.conf.tpl
 COPY ./uwsgi_params /etc/nginx/uwsgi_params

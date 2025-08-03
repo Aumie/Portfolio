@@ -164,10 +164,10 @@ CORS_ALLOWED_ORIGINS = [
     'https://127.0.0.1:4173',
     'https://127.0.0.1',
     'https://localhost',
-    'http://www.aumidev.me',
-    'https://www.aumidev.me',
-    'https://aumidev.me',
-    'https://aumidev.me',
+    'http://www.peerapat.dev',
+    'https://www.peerapat.dev',
+    'https://peerapat.dev',
+    'https://peerapat.dev',
 ]
 # change to https://app.example.com in production settings
 CORS_ORIGIN_WHITELIST = [
@@ -178,14 +178,14 @@ CORS_ORIGIN_WHITELIST = [
     'https://127.0.0.1:4173',
     'https://127.0.0.1',
     'https://localhost',
-    'http://www.aumidev.me',
-    'https://www.aumidev.me',
-    'https://aumidev.me',
-    'http://aumidev.me',
+    'http://www.peerapat.dev',
+    'https://www.peerapat.dev',
+    'https://peerapat.dev',
+    'http://peerapat.dev',
 
 ]
 # for django 4++
-CSRF_TRUSTED_ORIGINS = ['https://aumidev.me', 'http://aumidev.me']
+CSRF_TRUSTED_ORIGINS = ['https://peerapat.dev', 'http://peerapat.dev']
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
@@ -239,7 +239,7 @@ SIMPLE_JWT = {
 
 #     'CONTACT': {
 #         'name': 'Peerapat Channak',
-#         'url': 'https://www.aumidev.me',
+#         'url': 'https://www.peerapat.dev',
 #         'email': 'ca.peerapat_st@tni.ac.th'
 #     },
 #     'LICENSE': {

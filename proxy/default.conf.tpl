@@ -3,7 +3,7 @@
 #}
 server {
     listen ${LISTEN_PORT};
-    server_name aumidev.me www.aumidev.me;
+    server_name peerapat.dev www.peerapat.dev;
 #    server_name _;
     server_tokens off;
 
@@ -27,7 +27,7 @@ server {
 
 #    listen ${LISTEN_PORT};
     listen 443 ssl;
-    server_name aumidev.me www.aumidev.me;
+    server_name peerapat.dev www.peerapat.dev;
 #    server_name _;
     server_tokens off;
 
@@ -35,8 +35,8 @@ server {
 
     ssl_certificate_key /etc/cert/private.key;
 
-#    ssl_certificate /etc/letsencrypt/live/aumidev.me/fullchain.pem;
-#    ssl_certificate_key /etc/letsencrypt/live/aumidev.me/privkey.pem;
+#    ssl_certificate /etc/letsencrypt/live/peerapat.dev/fullchain.pem;
+#    ssl_certificate_key /etc/letsencrypt/live/peerapat.dev/privkey.pem;
 #    include /etc/letsencrypt/options-ssl-nginx.conf;
 #    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
