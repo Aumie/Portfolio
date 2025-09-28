@@ -105,9 +105,9 @@ server {
       include                 /etc/nginx/uwsgi_params;
     }
     # any url start with /static will go to /vol/static
-    location /static {
+    location /static/ {
        autoindex on;
-       alias /vol/static;
+       alias /vol/static/;
     }
 
 #    location /api/ {
