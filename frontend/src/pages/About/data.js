@@ -52,7 +52,7 @@ export const job = [
 		id: 'recIL6mJNfWObonls',
 		order: 2,
 		title: 'Jr. Solution Architect',
-		dates: 'July 2021 - Apr 2022',
+		dates: 'July 2021 - Mar 2022',
 		duties: [
 			'Provided quotations and service mapping architecture diagram to the customers after discussing with Sr. Solution Architects and Business Developments.',
 			'Supported the customers by providing documentation or instructions through online meeting, when there are technical issues on products.',
