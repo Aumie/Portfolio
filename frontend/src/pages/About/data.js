@@ -1,9 +1,33 @@
 export const job = [
+	{
+		id: 'yJrecILWObon696Nf',
+		order: 6,
+		title: 'Software Engineer',
+		dates: 'Nov 2025 - Feb 2026',
+		duties: [
+            "Maintained and extended Subscription and Payment services, including automated PDF invoice generation while following Clean Architecture principles",
+			'Developed modular UI components using Angular micro-frontends within a Next.js wrapper',
+			'Enhanced a high-concurrency Tax Filing system using Microservices, ensuring system stability and performance'
+		],
+		company: 'Gofive',
+	},
+	{
+		id: 'kJrecILWObon696Nf',
+		order: 5,
+		title: 'Software Engineer',
+		dates: 'Jan 2025 - Oct 2025',
+		duties: [
+            "Maintained and implemented new features for a cross-platform legal application (Windows/iOS)",
+			'Improved and added new UI features used on spectroscopy machines',
+			'Designed and built the core functionality for an end-to-end NFT certificate system for a Thai public organization'
+		],
+		company: 'Ordis',
+	},
     {
 		id: 'mJrecILWObon696Nf',
 		order: 4,
 		title: 'Software Engineer',
-		dates: 'Jan 2024 - Current',
+		dates: 'Jan 2024 - Dec 2024',
 		duties: [
             "Gathered requirements with a System Analyst",
 			'Mostly, worked with existing project. Maintained and implemented new features.',
@@ -15,8 +39,8 @@ export const job = [
 	{
 		id: 'recIL6mJNfWObon69',
 		order: 3,
-		title: 'Unreal Engine Developer',
-		dates: 'Sep 2023 - Oct 2023',
+		title: 'Game Developer',
+		dates: 'Jun 2023 - Dec 2023',
 		duties: [
 			'Implemented game mechanics',
 			'Implemented a simple GOAP AI Framework to use in an Unreal Engine project',
@@ -28,7 +52,7 @@ export const job = [
 		id: 'recIL6mJNfWObonls',
 		order: 2,
 		title: 'Jr. Solution Architect',
-		dates: 'July 2021 - Mar 2022',
+		dates: 'July 2021 - Apr 2022',
 		duties: [
 			'Provided quotations and service mapping architecture diagram to the customers after discussing with Sr. Solution Architects and Business Developments.',
 			'Supported the customers by providing documentation or instructions through online meeting, when there are technical issues on products.',
